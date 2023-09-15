@@ -9,9 +9,6 @@ app.get("/", (req, res) => {
     res.render(index)
 })
 
-
-
-
 // Setup middleware
 function logger(req, res, next) {
     console.log(req.originalUrl);
