@@ -24,6 +24,21 @@ app.get('/cart', (req, res) => {
 app.get('/myaccount', (req, res) => {
   res.render('myaccount'); 
 });
++app.get('/login', (req, res) => {
+  res.render('login'); 
+});
+app.get('/login/register', (req, res) => {
+  res.render('user'); 
+});
+app.get('/login/register/customer_registration_form', (req, res) => {
+  res.render('customer_register'); 
+});
+app.get('/login/register/vendor_registration_form', (req, res) => {
+  res.render('vendor_register'); 
+});
+app.get('/login/register/shipper_registration_form', (req, res) => {
+  res.render('shipper_register'); 
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
