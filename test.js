@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const config = require('./config');
 
 // Import models
-const User = require('./models/User');
-const Product = require('./models/Product');
-const Shop = require('./models/Shop');
-const Order = require('./models/Order');
+const User = require('./models/user');
+const Product = require('./models/product');
+const Shop = require('./models/shop');
+const Order = require('./models/order');
 
 async function testModels() {
   try {

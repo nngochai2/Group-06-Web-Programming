@@ -1,44 +1,49 @@
 const mongoose = require('mongoose');
 
 const OrderSchema = new mongoose.Schema({
-  customerId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  vendorId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  shipperId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  shopId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Shop',
-    required: true
-  },
-  products: [
-    {
-      productId: {
+    customerId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    vendorId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    shipperId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    shopId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Shop',
+        required: true
+    },
+    products: [{
+        productId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product',
         required: true
-      },
-      quantity: {
+        },
+        quantity: {
         type: Number,
         required: true
-      }
+        }
     }
-  ],
-  status: {
-    type: String,
-    enum: ['Pending', 'Ready for Shipment', 'In Transit', 'Delivered'],
-    default: 'Pending'
-  },
-  // Additional order fields as needed
+    ],
+    status: {
+        type: String,
+        enum: ['Pending', 'Ready for Shipment', 'In Transit', 'Delivered'],
+        default: 'Pending'
+    },
+    orderDate: {
+        type: Date,
+        default: Date.now
+    },
+    deliveryDate: Date,
+    totalAmount: Number,
+    deliveryAddress: String,
 });
 
 const Order = mongoose.model('Order', OrderSchema);
