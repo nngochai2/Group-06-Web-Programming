@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const config = require('./config');
 
 // Import models
 const User = require('./models/user');
@@ -7,11 +6,23 @@ const Product = require('./models/product');
 const Shop = require('./models/shop');
 const Order = require('./models/order');
 
+// Define your MongoDB connection string directly
+const mongoURI = 'mongodb+srv://andrew:1234@cluster0.taoc8gg.mongodb.net/?retryWrites=true&w=majority';
+
+// Connect to MongoDB
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => {
+  console.log('MongoDB Connected');
+  // Run the test script
+  testModels();
+})
+.catch(err => console.log('Error connecting to MongoDB:', err));
+
 async function testModels() {
   try {
-    // Connect to MongoDB
-    await mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-
     // Create a new user (vendor)
     const vendor = new User({
       username: 'vendor1',
@@ -78,6 +89,3 @@ async function testModels() {
     await mongoose.connection.close();
   }
 }
-
-// Run the test script
-testModels();
