@@ -1,8 +1,7 @@
 const express = require('express');
+const vendorController = require('../controllers/vendorController'); 
 const router = express.Router();
-const vendorController = require('../controllers/vendorController');
 
-router.get('/', vendorController.viewProducts);
-router.post('/add-product', vendorController.addProduct);
+router.get('/vendor', vendorController.renderVendorPage);
 
 module.exports = router;

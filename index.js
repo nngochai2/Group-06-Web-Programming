@@ -1,8 +1,20 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const mongoose = require('mongoose');
+const vendorRoutes = require('./routes/vendorRoutes');
 
+const Product = require('./models/Product');
+const mongoURI = 'mongodb+srv://andrew:1234@cluster0.taoc8gg.mongodb.net/?retryWrites=true&w=majority';
 
+// Connect to MongoDB
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 // Set EJS as the view engine
@@ -27,9 +39,9 @@ app.get('/myaccount', (req, res) => {
 app.get('/shipper', (req, res) => {
   res.render('shipper'); 
 });
-app.get('/vendor', (req, res) => {
-  res.render('vendor'); 
-});
+//app.get('/vendor', (req, res) => {
+  //res.render('vendor'); 
+//});
 app.get('/product-detail', (req, res) => {
   res.render('product-detail'); 
 });
@@ -56,7 +68,7 @@ app.get('/about-us', (req, res) => {
 });
 
 
-
+app.use(vendorRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

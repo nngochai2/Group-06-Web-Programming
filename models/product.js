@@ -14,6 +14,5 @@ const ProductSchema = new mongoose.Schema({
     category: String,
     stockQuantity: Number,
 });
-
-const Product = mongoose.model('Product', ProductSchema);
+const Product = mongoose.models.Product || mongoose.model('Product', ProductSchema);
 module.exports = Product;
