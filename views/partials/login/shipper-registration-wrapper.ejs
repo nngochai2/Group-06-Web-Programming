@@ -1,0 +1,70 @@
+<div class="regis-wrapper">
+    <div class="form-box register">
+        <h2>Shipper Registration</h2>
+        <form action="#">
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon>
+                </span>
+                <input type="text" required>
+                <label>Your Full Name</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon>
+                </span>
+                <input type="text" required id="username">
+                <label>Username</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input type="password" required id="password">
+                <label>Password</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input type="password" required id="confirmpassword">
+                <label>Confirm Your Password</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="home"></ion-icon>
+                </span>
+                <input type="text" required>
+                <label>Your address</label>
+            </div>
+            <div class="form-row align-items-center">
+                <div class="col-auto my-1">
+                  <label class="mr-sm-2 text-light" for="inlineFormCustomSelect">Select Distribution Hub</label>
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Choose</option>
+                    <option value="1">Hub 1</option>
+                    <option value="2">Hub 2</option>
+                    <option value="3">Hub 3</option>
+                  </select>
+                </div>
+            <div class="file_container">
+                <div class="panel">
+                    <div class="button_outer">
+                        <div class="btn_upload">
+                            <input type="file" id="upload_file" name="">
+                            Upload Your Profile Picture
+                        </div>
+                        <div class="processing_bar"></div>
+                        <div class="success_box"></div>
+                    </div>
+                </div>
+                <div class="error_msg"></div>
+                <div class="uploaded_file_view" id="uploaded_view">
+                    <span class="file_remove">X</span>
+                </div>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">I agree to the terms & conditions</label>
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <div class="login-register">
+                <p>Already have an account? <a href="/login" class="login-link">Login</a></p>
+            </div>
+        </form>
+    </div>
+</div>

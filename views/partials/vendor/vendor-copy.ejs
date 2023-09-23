@@ -1,0 +1,39 @@
+<div id="current-prd">
+    <h1>Current Products</h1>
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Action</th>
+        </tr>
+        <% products.forEach(function(product) { %>
+            <tr>
+                <td><%= product.name %></td>
+                <td><%= product.price %> €</td>
+                <td><%= product.stock %></td>
+                <td>
+                    <i class="fas fa-edit action-icons"></i> <!-- Edit icon -->
+                    <i class="fas fa-trash-alt action-icons"></i> <!-- Delete icon -->
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+</div>
+
+<div id="add-prd">
+    <h1>Add Product</h1>
+    <form method="post" action="/add-product"> 
+        <label for="fname">Product name:</label>
+        <input type="text" id="fname" name="name" required>
+        <label for="stock">In Stock:</label>
+        <input type="text" id="stock" name="stock">
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" required>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description">
+        <label for="product-image">Product Image:</label>
+        <input type="file" id="product-image" name="productImage">
+        <input type="submit" value="Submit">
+    </form>
+</div>
