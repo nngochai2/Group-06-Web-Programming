@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/public/shipper.css">
+        <!--This import icons for later usage-->
+        <script src="https://kit.fontawesome.com/d3a524326f.js" crossorigin="anonymous"></script>
+        <!--Imported font family from google-->
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+        </style>
+        <title>Bespoke.IT</title>
+    </head>
+<body>
+    <header>
+        <h2 class="logo">Logo</h2>
+        <nav>
+            <a href="#" class="logo"><img alt="bespoke.it logo" src="/images/bespoke.it logo.png"></a>
+            
+            <ul class="navbar">
+                <li><a href="#" class="Active">Home</a></li>    
+                <li><a href="#">About</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Shopping</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+            <div class="main">
+                <a href="#" class="user"><i class="fa-solid fa-user"></i>Sign in</a>
+                <a href="#"> Register</a>
+                <div class="fa-solid fa-bars" id="menu-icon"></div>
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="hub-cards">
+            <div class="hub-card">
+                <img src="hub1.jpg" alt="Hub 1">
+                <p>description</p>
+            </div>
+            <div class="hub-card">
+                <img src="hub2.jpg" alt="Hub 2">
+                <p>description</p>
+            </div>
+            <div class="hub-card">
+                <img src="hub3.jpg" alt="Hub 3">
+                <p>description</p>
+            </div>
+        </section>
+    
+        <section class="order-table">
+            <h2>Active Orders</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer Name</th>
+                        <th>Delivery Address</th>
+                        <th>Total Amount ($)</th>
+                        <th>Status</th>
+                        <th>Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Use EJS tags to dynamically render active orders -->
+                    <% activeOrders.forEach(function(order) { %>
+                        <tr>
+                            <td><%= order.orderID %></td>
+                            <td><%= order.customerName %></td>
+                            <td><%= order.deliveryAddress %></td>
+                            <td><%= order.totalAmount %></td>
+                            <td><%= order.status %></td>
+                            <td><button>View Details</button></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </section>
+    
+        <section class="order-table">
+            <h2>Inactive Orders</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer Name</th>
+                        <th>Delivery Address</th>
+                        <th>Total Amount ($)</th>
+                        <th>Status</th>
+                        <th>Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Use EJS tags to dynamically render inactive orders -->
+                    <% inactiveOrders.forEach(function(order) { %>
+                        <tr>
+                            <td><%= order.orderID %></td>
+                            <td><%= order.customerName %></td>
+                            <td><%= order.deliveryAddress %></td>
+                            <td><%= order.totalAmount %></td>
+                            <td><%= order.status %></td>
+                            <td><button>View Details</button></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    
+    <footer> 
+        <div class="footer-container">    
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class='fab fa-facebook'></i></a>
+                <a href="#" target="_blank"><i class='fab fa-instagram'></i></a>
+                <a href="#" target="_blank"><i class='fab fa-twitter'></i></a>
+                <a href="#"><i class='fab fa-google-plus'></i></a>
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Shopping</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>      
+        </div>
+    </footer>
+</body>
+</html>
