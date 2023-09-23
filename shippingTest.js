@@ -15,27 +15,21 @@ mongoose.connect(mongoURI, {
 .then(async () => {
   console.log('MongoDB Connected');
 
-  // Create a test shipper user
   const shipper = new User({
     username: 'testShipper1',
-    password: 'password', // Note: In a real application, you would hash the password before storing it.
+    password: 'password', 
     role: 'shipper',
     email: 'testShipper1@example.com',
   });
   await shipper.save();
   console.log('Test Shipper created:', shipper);
 
-  // Run the shipping test script
   testShippingProcess();
 })
 .catch(err => console.log('Error connecting to MongoDB:', err));
 
 async function testShippingProcess() {
   try {
-    // 1. Order Creation
-    // (Assuming an order is already created and stored in the database)
-
-    // 2. Order Assignment
     const order = await Order.findOne({ status: 'Pending' }).populate('shopId');
     if (!order) {
       console.log('No pending orders found.');
