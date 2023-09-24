@@ -1,4 +1,4 @@
-<div id="current-prd">
+<div id="current-prd" class="container w-75 mb-5">
     <h1>Current Products</h1>
     <table>
         <tr>
@@ -21,11 +21,13 @@
                             <span>No Image Available</span>
                         <% } %>
                     </td>
-                    <td>
-                        <a href="/vendor/edit/<%= product._id %>">Edit</a>
-                        <form method="POST" action="/users/vendor/delete/<%= product._id %>" style="display:inline;">
-                            <input type="submit" value="Delete">    
+                    <td class="vendor-edit">
+                        <a href="/vendor/edit/<%= product._id %>"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <form method="POST" action="/users/vendor/delete/<%= product._id %>">  
+                                <input type="submit" id="delete-product" value="Delete">
+                                <label for="delete-product"><i class="fa-solid fa-trash"></i></label>
                         </form>
+                        
                     </td>
                 </tr>
             <% }) %>
@@ -37,22 +39,22 @@
     </table>
 </div>
 
-<div id="add-prd">
-    <h1>Add Product</h1>
+<div class="container w-75 mb-5" id="add-prd">
+    <h1>Add New Products</h1>
     <form method="post" action="/users/vendor/newproduct" enctype="multipart/form-data"> 
-        <label for="fname">Product name:</label>
-        <input type="text" id="fname" name="name" required>
-        <label for="stock">In Stock:</label>
-        <input type="number" id="stock" name="stockQuantity" min="0">
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" required>
-        <label for="category">Category:</label>
-        <input type="text" id="category" name="category" required>
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description">
-        <label for="product-image">Product Image:</label>
-        <input type="file" id="product-image" name="productImage">
-        <input type="submit" value="Submit">
+        <label class="col-sm-2 col-form-label fw-bold" for="fname">Product name:</label>
+        <input class="form-control mb-3 rounded p-2" type="text" id="fname" name="name" required>
+        <label class="col-sm-2 col-form-label fw-bold"  for="stock">In Stock:</label>
+        <input class="form-control mb-3 rounded p-2" type="number" id="stock" name="stockQuantity" min="0">
+        <label class="col-sm-2 col-form-label fw-bold" for="price">Price:</label>
+        <input class="form-control mb-3 rounded p-2" type="number" id="price" name="price" required>
+        <label class="col-sm-2 col-form-label fw-bold" for="category">Category:</label>
+        <input class="form-control mb-3 rounded p-2" type="text" id="category" name="category" required>
+        <label class="col-sm-2 col-form-label fw-bold" for="description">Description:</label>
+        <input class="form-control mb-3 rounded p-2" type="text" id="description" name="description">
+        <label class="col-sm-2 col-form-label fw-bold" for="product-image">Product Image:</label>
+        <input class="form-control mb-5 rounded p-2" type="file" id="product-image" name="productImage">
+        <input class="form-control mb-3 rounded p-2 w-25 m-auto" id="submit-product" type="submit" value="Submit">
     </form>
 </div>
 

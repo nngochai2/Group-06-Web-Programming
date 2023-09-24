@@ -4,23 +4,29 @@ body {
     margin: 0;
     padding: 0;
 }
-
-#current-prd, #add-prd {
-    background-color: #fff;
+/* Styling display containers */
+#current-prd{
+    background-color: #97B2DE;
     border-radius: 10px;
-    margin: 20px;
+   
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-
+#add-prd{ 
+    background-color: #97B2DE;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
 }
-
+/* styling table */
 table {
     width: 100%;
     border-collapse: collapse;
+
 }
 
 th, td {
@@ -30,41 +36,41 @@ th, td {
 }
 
 th {
-    background-color: #ffffff;
+    background-color: #97B2DE;
+    font-weight: bold;
+    font-size: 1.4rem;
 }
 
 tr:nth-child(even) {
-    background-color: #ffffff;
+    background-color: white ;
 }
-
+/* styling functional buttons,labels,input */
 label {
     display: block;
     margin-bottom: 5px;
 }
 
-input[type="text"], input[type="file"] {
-    width: 98%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+.vendor-edit{
+    padding-right: auto;
 }
-
-input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
+.vendor-edit input{
+    display: none;
+}
+.vendor-edit a{
+    color: red;
+}
+.vendor-edit label{
+    cursor: pointer;
+}
+.vendor-edit label:hover{
+    color: #018ABE ;
+}
+#submit-product{
+    background-color: #1A488E;
+    color: white;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-.action-icons {
-    font-size: 20px;
-    margin-right: 10px;
-    cursor: pointer;
+#submit-product:hover{
+    background-color: white;
+    color: #97B2DE;
 }

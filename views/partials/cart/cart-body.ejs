@@ -5,41 +5,66 @@
             <th>Quantity</th>
             <th>Subtotal</th>
         </tr>
-        <% let subtotal = 0; %>
-        <% cart.items.forEach(item => { %>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="<%= item.image %>" alt="<%= item.name %>">
-                        <div>
-                            <p><%= item.name %></p>
-                            <small>Price: $<%= item.price.toFixed(2) %></small>
-                            <br>
-                            <a href="/cart?productId=<%= item.productId %>">Remove</a>
-                        </div>
+        <tr>
+            <td>
+                <div class="cart-info">
+                    <img src="../images/computer.jpg" alt="">
+                    <div>
+                        <p>GIGABYTE AORUS(43")</p>
+                        <small>Price: $50.00</small>
+                        <br>
+                        <a href="#">Remove</a>
                     </div>
-                </td>
-                <td><input type="number" value="<%= item.quantity %>" min="1"></td>
-                <td>$<%= (item.price * item.quantity).toFixed(2) %></td>
-            </tr>
-            <% subtotal += item.price * item.quantity; %>
-        <% }); %>
+                </div>
+            </td>
+            <td><input type="number" value="1" min="1"></td>
+            <td>$50.00</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="cart-info">
+                    <img src="../images/computer.jpg" alt="">
+                    <div>
+                        <p>GIGABYTE AORUS(43")</p>
+                        <small>Price: $50.00</small>
+                        <br>
+                        <a href="#">Remove</a>
+                    </div>
+                </div>
+            </td>
+            <td><input type="number" value="1" min="1"></td>
+            <td>$50.00</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="cart-info">
+                    <img src="../images/computer.jpg" alt="">
+                    <div>
+                        <p>GIGABYTE AORUS(43")</p>
+                        <small>Price: $50.00</small>
+                        <br>
+                        <a href="#">Remove</a>
+                    </div>
+                </div>
+            </td>
+            <td><input type="number" value="1" min="1"></td>
+            <td>$50.00</td>
+        </tr>
     </table>
 
     <div class="total-price">
         <table>
             <tr>
                 <td>Subtotal</td>
-                <td>$<%= subtotal.toFixed(2) %></td>
+                <td>$150.00</td>
             </tr>
-            <% let tax = subtotal * 0.23; // Assuming a tax rate of 23% %>
             <tr>
                 <td>Tax</td>
-                <td>$<%= tax.toFixed(2) %></td>
+                <td>$35.00</td>
             </tr>
             <tr>
                 <td>Total</td>
-                <td>$<%= (subtotal + tax).toFixed(2) %></td>
+                <td>$150.00</td>
             </tr>
             <tr>
                <td colspan="2"><button class="btn btn-primary" type="submit">Check Out</button></td>

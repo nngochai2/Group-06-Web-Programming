@@ -4,13 +4,13 @@ body, h1, h2, p, ul, li, table, th, td, button {
     border: none;
     font-family: Arial, sans-serif;
 }
-
+/* Styling container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
-
+/* Styling cards */
 .hub-cards {
     display: flex;
     flex-wrap: wrap;
@@ -29,7 +29,7 @@ body, h1, h2, p, ul, li, table, th, td, button {
 .hub-card img {
     max-width: 100%;
 }
-
+/* Styling order table */
 .order-table {
     margin-top: 20px;
 }
@@ -53,7 +53,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
-
+/* media to ensure responsive */
 @media (max-width: 768px) {
     .hub-cards {
         flex-direction: column;

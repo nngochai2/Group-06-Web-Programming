@@ -3,7 +3,6 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
-const session = require('express-session');
 const vendorRoutes = require('./routes/vendorRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const customerRoutes = require('./routes/customerRoutes');
@@ -23,16 +22,8 @@ mongoose.connect(mongoURI, {
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Error connecting to MongoDB:', err));
 
-// Configure session
-app.use(session({
-  secret: 'andrew',
-  resave: false,
-  saveUninitialized: false,
-}));
-
-// Initialize Passport
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(productRoutes);
+app.use(cartRoutes);
 
 app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({ extended: true }));
@@ -41,9 +32,6 @@ app.use(express.static('public'));
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
-
-app.use(productRoutes);
-app.use(cartRoutes);
 
 // Define routes
 app.get('/', (req, res) => res.render('frontpage'));
@@ -69,21 +57,21 @@ app.use('/auth', redirectOnLoginRoute);
 passport.use(new LocalStrategy(
   async (username, password, done) => {
     try {
-      console.log('Authenticating user:', username);
+      console.log('Authenticating user:', username); // Log the username being authenticated
       const user = await User.findOne({ username });
       if (!user) {
-        console.log('User not found:', username);
+        console.log('User not found:', username); // Log if the user is not found
         return done(null, false, { message: 'Incorrect username or password.' });
       }
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
-        console.log('Incorrect password for user:', username);
+        console.log('Incorrect password for user:', username); // Log if the password is incorrect
         return done(null, false, { message: 'Incorrect username or password.' });
       }
-      console.log('User authenticated successfully:', username);
+      console.log('User authenticated successfully:', username); // Log if the user is authenticated successfully
       return done(null, user);
     } catch (err) {
-      console.error('Error during authentication:', err);
+      console.error('Error during authentication:', err); // Log any errors during authentication
       return done(err);
     }
   }
@@ -101,27 +89,30 @@ passport.deserializeUser(async (id, done) => {
 });
 
 app.post('/login', passport.authenticate('local', {
-  failureRedirect: '/login',
+  failureRedirect: '/login', // redirect back to the login page on failure
 }), (req, res) => {
-  console.log('User authenticated:', req.user);
+  console.log('User authenticated:', req.user); // Log the authenticated user
   if (req.isAuthenticated()) {
+    // Check the role of the user and redirect accordingly
     switch (req.user.role) {
       case 'shipper':
         res.redirect('/shipper');
         break;
-      case 'vendor':
+      case 'vendor':  
         res.redirect('/vendor');
         break;
       case 'customer':
         res.redirect('/customer');
         break;
       default:
-        res.redirect('/login');
+        res.redirect('/login'); // Redirect to login page if role is not recognized
     }
   } else {
-    res.redirect('/login');
+    res.redirect('/login'); // Redirect to login page if not authenticated
   }
 });
+
+
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
@@ -129,6 +120,7 @@ function ensureAuthenticated(req, res, next) {
   }
   res.redirect('/login');
 }
+
 
 app.get('/protected-route', ensureAuthenticated, (req, res) => res.send('This is a protected route'));
 
