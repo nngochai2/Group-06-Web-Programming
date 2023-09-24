@@ -25,7 +25,7 @@ mongoose.connect(mongoURI, {
 .catch(err => console.error('Error connecting to MongoDB:', err));
 
 app.use(session({
-  secret: 'andrew', 
+  secret: 'andrew01', 
   saveUninitialized: false,
 }));
 

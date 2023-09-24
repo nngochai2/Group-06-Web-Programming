@@ -24,7 +24,54 @@ router.post('/registerCustomer', upload.single('profilePicture'), async (req, re
             role: 'customer',
             fullName: req.body.fullName,
             address: req.body.address,
-            // Add other fields as needed
+        });
+
+        await user.save();
+        res.redirect('/login');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.post('/registerShipper', upload.single('profilePicture'), async (req, res) => {
+    try {
+        if (req.body.password !== req.body.confirmpassword) {
+            return res.status(400).send('Passwords do not match');
+        }
+
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        const user = new User({
+            username: req.body.username,
+            password: hashedPassword,
+            role: 'shipper',
+            fullName: req.body.fullName,
+            address: req.body.address,
+        });
+
+        await user.save();
+        res.redirect('/login');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.post('/registerVendor', upload.single('profilePicture'), async (req, res) => {
+    try {
+        if (req.body.password !== req.body.confirmpassword) {
+            return res.status(400).send('Passwords do not match');
+        }
+
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        const user = new User({
+            username: req.body.username,
+            password: hashedPassword,
+            role: 'vendor',
+            fullName: req.body.fullName,
+            address: req.body.address,
         });
 
         await user.save();
