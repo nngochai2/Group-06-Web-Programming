@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head section here -->
+    <%- include('./partials/head.ejs') %>
+    <!--Import Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Head section here -->
+<body>
+    <!-- Navigation bar section here -->
+    <%- include('./partials/others-nav.ejs') %>
+    <!-- Main section here -->
+    <main>
+        <!--View Shipper Product Body-->
+        <h1 class="text-center">Order Details</h1>
+        <div class="container shadow-lg  w-50 bg-light rounded p-3 mb-5">
+            <div class="flex flex-col m-4 m-4">
+                <h2>Order:</h2>
+                <p>Order id:<%= order.id %></p>
+                <p>Date:<%= order.date %></p>
+                <p>Total Price:<%=  %></p>
+            </div>
+            <div class="flex flex-col m-4 m-4">
+                <h2>Shipping Address:</h2>
+                <p>Customer's Name: <%= customer.name %></p>
+                <p>Customer's Address: <%= customer.address %></p>
+            </div>
+            <div class="flex flex-col m-4 m-4">
+                <h2 class="text-center">Items</h2>
+                <% if (product && product.image && product.image.data) { %>
+                    <img src="data:<%= product.image.contentType %>;base64,<%= product.image.data.toString('base64') %>" class="card-img-top" alt="<%= product.name %>">
+                <% } else { %>
+                    <img src="/path-to-default-image.jpg" class="card-img-top" alt="Default Image">
+                <% } %>
+                <% if (product) { %>
+                    <p>Name: <%= product.name %></p>
+                    <p>Price: $<%= product.price.toFixed(2) %></p>
+                    <p>Quantity:<%= product.quantity %></p>
+                <% } else { %>
+                    <p>Product not found</p>
+                <% } %>
+            </div>
+            <input class="form-control mb-3 rounded p-2 w-25 m-auto text-bg-primary" type="submit" value="Back">
+        </div>
+    </main> 
+        <!-- Footer section here -->
+        <%- include('./partials/footer.ejs') %>
+        <!-- Footer section here -->
+
+        <!--Js link-->
+<script type="text/javascript" src="/js/customer-script.js"></script>
+</body>
+</html>
