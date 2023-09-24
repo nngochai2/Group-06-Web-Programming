@@ -13,12 +13,22 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Use EJS tags to dynamically render active orders -->
-                
+                <% activeOrders.forEach(order => { %>
+                    <tr>
+                        <td><%= order._id %></td>
+                        <td><%= order.customerName %></td>
+                        <td><%= order.deliveryAddress %></td>
+                        <td><%= order.totalAmount %></td>
+                        <td><%= order.status %></td>
+                        <td class="order-detail">
+                            <a href="/order/detail/<%= order._id %>">View Details</a>
+                        </td>
+                    </tr>
+                <% }) %>
             </tbody>
         </table>
     </section>
-
+    
     <section class="order-table">
         <h2>Inactive Orders</h2>
         <table>
@@ -33,10 +43,22 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Use EJS tags to dynamically render inactive orders -->
+                <% inactiveOrders.forEach(order => { %>
+                    <tr>
+                        <td><%= order._id %></td>
+                        <td><%= order.customerName %></td>
+                        <td><%= order.deliveryAddress %></td>
+                        <td><%= order.totalAmount %></td>
+                        <td><%= order.status %></td>
+                        <td class="order-detail">
+                            <a href="/order/detail/<%= order._id %>">View Details</a>
+                        </td>
+                    </tr>
+                <% }) %>
             </tbody>
         </table>
     </section>
+    
 
     <section class="hub-cards">
         <div class="hub-card">

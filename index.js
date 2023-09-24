@@ -7,6 +7,7 @@ const vendorRoutes = require('./routes/vendorRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const customerRoutes = require('./routes/customerRoutes');
 const productRoutes = require('./routes/productRoutes');
+const shipperRoutes = require('./routes/shipperRoutes');
 const redirectOnLoginRoute = require('./routes/auth');
 const User = require('./models/user');
 
@@ -39,7 +40,7 @@ app.get('/shopping', (req, res) => res.render('customer'));
 app.get('/products', (req, res) => res.render('products'));
 app.get('/cart', (req, res) => res.render('cart'));
 app.get('/myaccount', (req, res) => res.render('myaccount'));
-app.get('/shipper', (req, res) => res.render('shipper'));
+//app.get('/shipper', (req, res) => res.render('shipper'));
 app.get('/login', (req, res) => res.render('login'));
 app.get('/product-detail', (req, res) => res.render('product-detail'));
 app.get('/login/register', (req, res) => res.render('user'));
@@ -51,6 +52,7 @@ app.get('/contact-us', (req, res) => res.render('contact-us'));
 app.get('/about-us', (req, res) => res.render('about-us'));
 
 app.use(vendorRoutes);
+app.use(shipperRoutes);
 app.use(customerRoutes);
 app.use('/auth', redirectOnLoginRoute);
 
