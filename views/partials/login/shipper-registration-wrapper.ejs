@@ -1,35 +1,29 @@
 <div class="regis-wrapper">
     <div class="form-box register">
         <h2>Shipper Registration</h2>
-        <form action="#">
+        <form action="/register/shipper" method="POST" enctype="multipart/form-data">
             <div class="input-box">
                 <span class="icon"><ion-icon name="person"></ion-icon>
                 </span>
-                <input type="text" required>
+                <input type="text" name="fullName" required>
                 <label>Your Full Name</label>
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="person"></ion-icon>
                 </span>
-                <input type="text" required id="username">
+                <input type="text" name="username" required id="username">
                 <label>Username</label>
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="lock-closed"></ion-icon>
                 </span>
-                <input type="password" required id="password">
+                <input type="password" name="password" required id="password">
                 <label>Password</label>
-            </div>
-            <div class="input-box">
-                <span class="icon"><ion-icon name="lock-closed"></ion-icon>
-                </span>
-                <input type="password" required id="confirmpassword">
-                <label>Confirm Your Password</label>
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="home"></ion-icon>
                 </span>
-                <input type="text" required>
+                <input type="text" name="address" required>
                 <label>Your address</label>
             </div>
             <div class="form-row align-items-center">
