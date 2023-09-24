@@ -54,6 +54,7 @@ app.get('/about-us', (req, res) => res.render('about-us'));
 app.use(vendorRoutes);
 app.use(shipperRoutes);
 app.use(customerRoutes);
+app.use(productRoutes); 
 app.use('/auth', redirectOnLoginRoute);
 
 passport.use(new LocalStrategy(

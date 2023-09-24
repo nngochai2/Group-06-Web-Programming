@@ -13,14 +13,4 @@ router.get('/product-detail/:productId', async (req, res) => {
     }
   });
 
-router.get('/products/:productID', async (req, res) => {
-    try {
-        const productID = req.params.productID;
-        const product = await Product.findById(productID);
-        res.render('products', { product });
-    } catch (error) {
-        console.error(error);
-        res.status(500).render('error', { message: 'Error fetching product' });
-    }
-  });
 module.exports = router;
