@@ -48,12 +48,21 @@ app.use('/auth', redirectOnLoginRoute);
 passport.use(new LocalStrategy(
   async (username, password, done) => {
     try {
+      console.log('Authenticating user:', username); // Log the username being authenticated
       const user = await User.findOne({ username });
-      if (!user || !await bcrypt.compare(password, user.password)) {
+      if (!user) {
+        console.log('User not found:', username); // Log if the user is not found
         return done(null, false, { message: 'Incorrect username or password.' });
       }
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        console.log('Incorrect password for user:', username); // Log if the password is incorrect
+        return done(null, false, { message: 'Incorrect username or password.' });
+      }
+      console.log('User authenticated successfully:', username); // Log if the user is authenticated successfully
       return done(null, user);
     } catch (err) {
+      console.error('Error during authentication:', err); // Log any errors during authentication
       return done(err);
     }
   }
@@ -71,9 +80,29 @@ passport.deserializeUser(async (id, done) => {
 });
 
 app.post('/login', passport.authenticate('local', {
-  successRedirect: '/homepage',
-  failureRedirect: '/login',
-}));
+  failureRedirect: '/login', // redirect back to the login page on failure
+}), (req, res) => {
+  console.log('User authenticated:', req.user); // Log the authenticated user
+  if (req.isAuthenticated()) {
+    // Check the role of the user and redirect accordingly
+    switch (req.user.role) {
+      case 'shipper':
+        res.redirect('/shipper');
+        break;
+      case 'vendor':
+        res.redirect('/vendor');
+        break;
+      case 'customer':
+        res.redirect('/customer');
+        break;
+      default:
+        res.redirect('/login'); // Redirect to login page if role is not recognized
+    }
+  } else {
+    res.redirect('/login'); // Redirect to login page if not authenticated
+  }
+});
+
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
