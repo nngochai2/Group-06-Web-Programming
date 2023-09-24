@@ -1,12 +1,13 @@
 const express = require("express");
 const Cart = require("../models/cart");
 const Product = require("../models/product"); 
-const Auth = require("../middleware/authentication");
+const { ensureAuthenticated } = require("../middleware/authentication");
+
 
 const router = new express.Router();
 
 // Get cart items
-router.get("/cart", Auth, async (req, res) => {
+router.get("/cart", ensureAuthenticated, async (req, res) => {
   const owner = req.user._id;
 
   try {
@@ -22,7 +23,7 @@ router.get("/cart", Auth, async (req, res) => {
 });
 
 // Add item to cart
-router.post("/cart", Auth, async (req, res) => {
+router.post("/cart", ensureAuthenticated, async (req, res) => {
   const owner = req.user._id;
   const { productId, quantity } = req.body; 
 
@@ -67,7 +68,7 @@ router.post("/cart", Auth, async (req, res) => {
   }
 });
 
-router.delete("/cart/", Auth, async (req, res) => {
+router.delete("/cart/", ensureAuthenticated, async (req, res) => {
   const owner = req.user._id;
   const productId = req.query.productId; 
 
