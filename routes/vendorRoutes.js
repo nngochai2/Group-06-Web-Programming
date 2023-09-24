@@ -18,5 +18,8 @@ const upload = multer({ storage: storage });
 // Define your routes
 router.get('/vendor', vendorController.renderVendorPage);
 router.post('/users/vendor/newproduct', upload.single('productImage'), vendorController.addNewProduct);
+router.get('/vendor/edit/:productId', vendorController.getEditProduct);
+router.post('/vendor/edit/:productId', vendorController.postEditProduct);
+router.post('/users/vendor/delete/:productId', vendorController.deleteProduct);
 
 module.exports = router;

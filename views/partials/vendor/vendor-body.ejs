@@ -14,8 +14,11 @@
                     <td><%= product.price %></td>
                     <td><%= product.stockQuantity %></td>
                     <td>
-                        <a href="/users/vendor/<%= product._id %>">Edit</a>
-                        <a href="/users/vendor/<%= product._id %>/delete">Delete</a>
+                        <a href="/vendor/edit/<%= product._id %>">Edit</a>
+                        <form method="POST" action="/users/vendor/delete/<%= product._id %>">
+                            <input type="submit" value="Delete">    
+                        </form>
+                        
                     </td>
                 </tr>
             <% }) %>
