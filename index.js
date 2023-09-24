@@ -8,6 +8,7 @@ const cartRoutes = require('./routes/cartRoutes');
 const customerRoutes = require('./routes/customerRoutes');
 const productRoutes = require('./routes/productRoutes');
 const shipperRoutes = require('./routes/shipperRoutes');
+const userRoutes = require('./routes/userRoutes');
 const User = require('./models/user');
 const session = require('express-session');
 
@@ -60,6 +61,7 @@ app.use(vendorRoutes);
 app.use(shipperRoutes);
 app.use(customerRoutes);
 app.use(productRoutes); 
+app.use(userRoutes);
 
 app.use(passport.initialize());
 app.use(passport.session());

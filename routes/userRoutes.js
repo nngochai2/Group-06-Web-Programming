@@ -10,7 +10,7 @@ const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-router.post('/register', upload.single('profilePicture'), async (req, res) => {
+router.post('/registerCustomer', upload.single('profilePicture'), async (req, res) => {
     try {
         if (req.body.password !== req.body.confirmpassword) {
             return res.status(400).send('Passwords do not match');
@@ -29,6 +29,10 @@ router.post('/register', upload.single('profilePicture'), async (req, res) => {
 
         await user.save();
         res.redirect('/login');
+        console.log(`User registered: ${username}`);
+
+        // Send a success response
+        res.status(201).send('User registered successfully');
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
