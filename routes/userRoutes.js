@@ -29,10 +29,6 @@ router.post('/registerCustomer', upload.single('profilePicture'), async (req, re
 
         await user.save();
         res.redirect('/login');
-        console.log(`User registered: ${username}`);
-
-        // Send a success response
-        res.status(201).send('User registered successfully');
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');

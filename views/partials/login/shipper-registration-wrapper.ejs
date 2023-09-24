@@ -1,46 +1,47 @@
 <div class="regis-wrapper">
     <div class="form-box register">
         <h2>Shipper Registration</h2>
-        <form action="/register/shipper" method="POST" enctype="multipart/form-data">
+        <form action="/registerShipper" method="POST" enctype="multipart/form-data">
             <div class="input-box">
-                <span class="icon"><ion-icon name="person"></ion-icon>
-                </span>
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
                 <input type="text" name="fullName" required>
                 <label>Your Full Name</label>
             </div>
             <div class="input-box">
-                <span class="icon"><ion-icon name="person"></ion-icon>
-                </span>
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
                 <input type="text" name="username" required id="username">
                 <label>Username</label>
             </div>
             <div class="input-box">
-                <span class="icon"><ion-icon name="lock-closed"></ion-icon>
-                </span>
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
                 <input type="password" name="password" required id="password">
                 <label>Password</label>
             </div>
             <div class="input-box">
-                <span class="icon"><ion-icon name="home"></ion-icon>
-                </span>
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input type="password" name="confirmpassword" required id="confirmpassword">
+                <label>Confirm Your Password</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="home"></ion-icon></span>
                 <input type="text" name="address" required>
                 <label>Your address</label>
             </div>
-            <div class="form-row align-items-center">
-                <div class="col-auto my-1">
-                  <label class="mr-sm-2 text-light" for="inlineFormCustomSelect">Select Distribution Hub</label>
-                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                    <option selected>Choose</option>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="map"></ion-icon></span>
+                <select class="custom-select mr-sm-2" name="distributionHub" id="inlineFormCustomSelect" required>
+                    <option value="" disabled selected>Choose Distribution Hub</option>
                     <option value="1">Hub 1</option>
                     <option value="2">Hub 2</option>
                     <option value="3">Hub 3</option>
-                  </select>
-                </div>
+                </select>
+                <label>Select Distribution Hub</label>
+            </div>
             <div class="file_container">
                 <div class="panel">
                     <div class="button_outer">
                         <div class="btn_upload">
-                            <input type="file" id="upload_file" name="">
+                            <input type="file" id="upload_file" name="profilePicture">
                             Upload Your Profile Picture
                         </div>
                         <div class="processing_bar"></div>

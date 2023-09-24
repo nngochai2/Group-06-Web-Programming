@@ -15,11 +15,6 @@ const UserSchema = new mongoose.Schema({
     enum: ['customer', 'vendor', 'shipper'],
     required: true
   },
-  email: {
-    type: String,
-    unique: true,
-    sparse: true
-  },
   fullName: String,
   address: String,
   phoneNumber: String,
