@@ -1,24 +1,15 @@
 const mongoose = require('mongoose');
 
+const distributionhubs = ["Alpha","Beta","Gamma"];
+
 const OrderSchema = new mongoose.Schema({
-    customerId: {
+    distributionHub: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-    vendorId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-    shipperId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    },
-    shopId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Shop',
-        required: true
+        enum: distributionhubs,
+        default: (){
+            //randomly select a distribution hub
+            return distributionhubs[Math.floor(Math.random() * distributionhubs.length)];
+        }
     },
     products: [{
         productId: {
@@ -30,8 +21,7 @@ const OrderSchema = new mongoose.Schema({
         type: Number,
         required: true
         }
-    }
-    ],
+    }],
     status: {
         type: String,
         enum: ['Pending', 'Active', 'Inactive', 'Delivered', 'Completed'],

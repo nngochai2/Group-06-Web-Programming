@@ -1,20 +1,28 @@
+<!-- views/partials/product-detail/product-detail-body.ejs -->
 <div class="container text-left" id="products-container">
     <div class="row">
-      <div class="col-xl-6 col-lg-12 gy-4 gutters">
-        <div class="card" >
-            <img src="../images/computer.jpg" class="card-img-top" alt="...">
+        <div class="col-xl-6 col-lg-12 gy-4 gutters">
+            <div class="card">
+                <% if (product && product.image && product.image.data) { %>
+                    <img src="data:<%= product.image.contentType %>;base64,<%= product.image.data.toString('base64') %>" class="card-img-top" alt="<%= product.name %>">
+                <% } else { %>
+                    <img src="/path-to-default-image.jpg" class="card-img-top" alt="Default Image">
+                <% } %>
             </div>
-        </div>  
+        </div>
         <div class="col-xl-6 col-lg-12 gy-4 gutters" id="product-side">
-            <h2 class="product-detail-title">GIGABYTE AORUS(43")</h2>
-            <p class="publisher-title">Publisher:<span>Lebron James</span></p>
-            <h3 class="product-price">$8200</h3>
-            <div class="product-function">
-                <input type="number" id="quantity" name="quantity" value="1" min="1">
-                <a class="btn btn-primary" id="product-btn" href="#" role="button"><i class="fa-solid fa-cart-arrow-down"></i>  Into Cart</a>
-            </div>
-            <h3>Product Description</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda laudantium eaque perferendis eligendi, eos iure quos hic, cum sunt, reiciendis nam architecto? Fuga dolorum blanditiis nisi quod? Temporibus, eaque dolores.</p>
-        </div>  
+            <% if (product) { %>
+                <h2 class="product-detail-title"><%= product.name %></h2>
+                <h3 class="product-price">$<%= product.price.toFixed(2) %></h3>
+                <div class="product-function">
+                    <input type="number" id="quantity" name="quantity" value="1" min="1">
+                    <a class="btn btn-primary" id="product-btn" href="#" role="button"><i class="fa-solid fa-cart-arrow-down"></i> Into Cart</a>
+                </div>
+                <h3>Product Description</h3>
+                <p><%= product.description %></p>
+            <% } else { %>
+                <p>Product not found</p>
+            <% } %>
+        </div>
     </div>
 </div>

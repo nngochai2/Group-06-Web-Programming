@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const vendorRoutes = require('./routes/vendorRoutes');
 const customerRoutes = require('./routes/customerRoutes');
+const productRoutes = require('./routes/productRoutes');
 const redirectOnLoginRoute = require('./routes/auth');
 const User = require('./models/user');
 
@@ -19,7 +20,7 @@ mongoose.connect(mongoURI, {
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Error connecting to MongoDB:', err));
-
+app.use(productRoutes);
 app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -35,8 +36,8 @@ app.get('/products', (req, res) => res.render('products'));
 app.get('/cart', (req, res) => res.render('cart'));
 app.get('/myaccount', (req, res) => res.render('myaccount'));
 app.get('/shipper', (req, res) => res.render('shipper'));
-app.get('/product-detail', (req, res) => res.render('product-detail'));
 app.get('/login', (req, res) => res.render('login'));
+app.get('/product-detail', (req, res) => res.render('product-detail'));
 app.get('/login/register', (req, res) => res.render('user'));
 app.get('/customer', (req, res) => res.render('customer'));
 app.get('/login/register/customer-registration-form', (req, res) => res.render('customer-register'));
@@ -108,12 +109,14 @@ app.post('/login', passport.authenticate('local', {
 });
 
 
+
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
   res.redirect('/login');
 }
+
 
 app.get('/protected-route', ensureAuthenticated, (req, res) => res.send('This is a protected route'));
 
