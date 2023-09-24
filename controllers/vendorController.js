@@ -22,11 +22,13 @@ exports.addNewProduct = async (req, res) => {
             price,
             stockQuantity,
             description,
-            imageUrl: productImage ? productImage.path : null,
+            image: productImage ? {
+                data: productImage.buffer,
+                contentType: productImage.mimetype
+            } : null,
         });
 
         await newProduct.save();
-
         res.redirect('/vendor');
     } catch (error) {
         console.error(error);
@@ -75,6 +77,23 @@ exports.postEditProduct = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).render('error', { message: 'Error updating product' });
+    }
+};
+
+exports.getProductImage = async (req, res) => {
+    try {
+        const productId = req.params.productId;
+        const product = await Product.findById(productId);
+
+        if (!product || !product.image) {
+            throw new Error('Product or image not found');
+        }
+
+        res.set('Content-Type', product.image.contentType);
+        res.send(product.image.data);
+    } catch (error) {
+        console.error(error);
+        res.status(404).send('Image not found');
     }
 };
 

@@ -5,6 +5,7 @@
             <th>Product</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Image</th>
             <th>Action</th>
         </tr>
         <% if (products && products.length > 0) { %>
@@ -14,23 +15,27 @@
                     <td><%= product.price %></td>
                     <td><%= product.stockQuantity %></td>
                     <td>
+                        <% if (product.imageUrl) { %>
+                            <img src="<%= product.imageUrl %>" alt="Image for <%= product.name %>" style="width: 100px; height: auto;">
+                        <% } else { %>
+                            <span>No Image Available</span>
+                        <% } %>
+                    </td>
+                    <td>
                         <a href="/vendor/edit/<%= product._id %>">Edit</a>
-                        <form method="POST" action="/users/vendor/delete/<%= product._id %>">
+                        <form method="POST" action="/users/vendor/delete/<%= product._id %>" style="display:inline;">
                             <input type="submit" value="Delete">    
                         </form>
-                        
                     </td>
                 </tr>
             <% }) %>
         <% } else { %>
             <tr>
-                <td colspan="4">No products available.</td>
+                <td colspan="5">No products available.</td>
             </tr>
         <% } %>
     </table>
 </div>
-
-<!-- ... rest of the file ... -->
 
 <div id="add-prd">
     <h1>Add Product</h1>
@@ -41,6 +46,8 @@
         <input type="number" id="stock" name="stockQuantity" min="0">
         <label for="price">Price:</label>
         <input type="number" id="price" name="price" required>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required>
         <label for="description">Description:</label>
         <input type="text" id="description" name="description">
         <label for="product-image">Product Image:</label>
@@ -48,3 +55,4 @@
         <input type="submit" value="Submit">
     </form>
 </div>
+

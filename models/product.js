@@ -10,8 +10,14 @@ const ProductSchema = new mongoose.Schema({
         required: true
     },
     description: String,
-    imageUrl: String,
-    category: String,
+    image: {
+        data: Buffer,
+        contentType: String
+    },
+    category: {
+        type: String,
+        required: true,
+    },
     stockQuantity: Number,
 });
 const Product = mongoose.models.Product || mongoose.model('Product', ProductSchema);

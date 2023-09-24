@@ -3,6 +3,7 @@ const multer = require('multer');
 const vendorController = require('../controllers/vendorController');
 const router = express.Router();
 
+
 // Set up storage engine with multer
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -21,5 +22,7 @@ router.post('/users/vendor/newproduct', upload.single('productImage'), vendorCon
 router.get('/vendor/edit/:productId', vendorController.getEditProduct);
 router.post('/vendor/edit/:productId', vendorController.postEditProduct);
 router.post('/users/vendor/delete/:productId', vendorController.deleteProduct);
+router.get('/product-image/:productId', vendorController.getProductImage);
+
 
 module.exports = router;

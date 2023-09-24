@@ -4,6 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const vendorRoutes = require('./routes/vendorRoutes');
+const customerRoutes = require('./routes/customerRoutes');
 const redirectOnLoginRoute = require('./routes/auth');
 const User = require('./models/user');
 
@@ -19,6 +20,7 @@ mongoose.connect(mongoURI, {
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Error connecting to MongoDB:', err));
 
+app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
@@ -36,6 +38,7 @@ app.get('/shipper', (req, res) => res.render('shipper'));
 app.get('/product-detail', (req, res) => res.render('product-detail'));
 app.get('/login', (req, res) => res.render('login'));
 app.get('/login/register', (req, res) => res.render('user'));
+app.get('/customer', (req, res) => res.render('customer'));
 app.get('/login/register/customer-registration-form', (req, res) => res.render('customer-register'));
 app.get('/login/register/vendor-registration-form', (req, res) => res.render('vendor-register'));
 app.get('/login/register/shipper-registration-form', (req, res) => res.render('shipper-register'));
@@ -43,6 +46,7 @@ app.get('/contact-us', (req, res) => res.render('contact-us'));
 app.get('/about-us', (req, res) => res.render('about-us'));
 
 app.use(vendorRoutes);
+app.use(customerRoutes);
 app.use('/auth', redirectOnLoginRoute);
 
 passport.use(new LocalStrategy(
