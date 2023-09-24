@@ -253,7 +253,8 @@ nav{
     padding: 3rem 2rem; 
 }
 .reviews-section .reviews-container .reviews-box img{
-    height: 12rem;   
+    height: 12rem;
+    width: 12rem;   
     border-radius: 50%;
     object-fit: cover;
 }       
@@ -728,12 +729,7 @@ th:last-child{
         max-width: 15rem;
         max-height: 8rem;
     }
-    .hero{
-        background-position:right;
-        justify-content: center;
-        background-size: auto;
-            
-    }
+
     .hero .hero-content h3{
         font-size: 4.5rem;
     }
