@@ -8,8 +8,8 @@ const cartRoutes = require('./routes/cartRoutes');
 const customerRoutes = require('./routes/customerRoutes');
 const productRoutes = require('./routes/productRoutes');
 const shipperRoutes = require('./routes/shipperRoutes');
-const redirectOnLoginRoute = require('./routes/auth');
 const User = require('./models/user');
+const session = require('express-session');
 
 const app = express();
 const port = 3000;
@@ -22,6 +22,11 @@ mongoose.connect(mongoURI, {
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Error connecting to MongoDB:', err));
+
+app.use(session({
+  secret: 'andrew', 
+  saveUninitialized: false,
+}));
 
 app.use(productRoutes);
 app.use(cartRoutes);
@@ -55,7 +60,9 @@ app.use(vendorRoutes);
 app.use(shipperRoutes);
 app.use(customerRoutes);
 app.use(productRoutes); 
-app.use('/auth', redirectOnLoginRoute);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.use(new LocalStrategy(
   async (username, password, done) => {
