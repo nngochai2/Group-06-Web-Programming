@@ -23,7 +23,6 @@ const sampleUsers = [
     address: '123 Customer123 St',
     phoneNumber: '1234567891230',
   },
-  // Add more sample users as needed
 ];
 
 // Hash passwords and save users
