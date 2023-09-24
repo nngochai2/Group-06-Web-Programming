@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const Product = require('../models/Product'); // Ensure the correct path and case sensitivity
+const Product = require('../models/product'); 
 const router = express.Router();
 
 // Set up storage engine with multer

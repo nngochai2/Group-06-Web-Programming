@@ -1,140 +1,27 @@
 <h3 class="heading">Cases</h3>
-    <section class="products-container">
-        <div class="container text-center">
-            <div class="row">
-              <div class="col-xl-3 col-lg-6 gy-4 gutters">
-                <div class="card" >
-                    <a href="/product-detail"><img src="../images/computer.jpg" class="card-img-top" alt="..."></a>
-                        <div class="product-card-body">
-                            <h5 class="card-title">Core Components</h5>
-                            <div class="price">$15.99</div>
-                            <div class="stars">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star-half-stroke"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
+<section class="products-container">
+    <div class="container text-center">
+        <div class="row">
+            <% products.forEach(product => { %>
                 <div class="col-xl-3 col-lg-6 gy-4 gutters">
                     <div class="card">
-                    <a href="/product-detail"><img src="../images/computer.jpg" class="card-img-top" alt="..."></a>
+                        <a href="/product-detail/<%= product._id %>">
+                            <% if (product.image && product.image.data) { %>
+                                <img src="data:<%= product.image.contentType %>;base64,<%= product.image.data.toString('base64') %>" class="card-img-top" alt="<%= product.name %>">
+                            <% } else { %>
+                                <img src="../images/default-image.jpg" class="card-img-top" alt="Default Image">
+                            <% } %>
+                        </a>
                         <div class="product-card-body">
-                            <h5 class="card-title">Cases</h5>
-                            <div class="price">$15.99</div>
+                            <h5 class="card-title"><%= product.name %></h5>
+                            <div class="price">$<%= product.price.toFixed(2) %></div>
                             <div class="stars">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star-half-stroke"></i>
+                                <!-- You can generate stars here based on product rating -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6 gy-4 gutters">
-                    <div class="card">
-                   <a href="/product-detail"> <img src="../images/computer.jpg" class="card-img-top" alt="..."></a>
-                        <div class="product-card-body">
-                            <h5 class="card-title">Computer Storage</h5>
-                            <div class="price">$15.99</div>
-                            <div class="stars">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star-half-stroke"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 gy-4 gutters">
-                    <div class="card">
-                    <a href="/product-detail"><img src="../images/computer.jpg" class="card-img-top" alt="..."></a>
-                        <div class="product-card-body">
-                            <h5 class="card-title">PC cooling</h5>
-                            <div class="price">$15.99</div>
-                            <div class="stars">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star-half-stroke"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-    </section>
-    <section class="products-container">
-        <div class="container text-center">
-            <div class="row">
-              <div class="col-xl-3 col-lg-6 gy-4 gutters">
-                <div class="card" >
-                    <a href="/product-detail"><img src="../images/computer.jpg" class="card-img-top" alt="..."></a>
-                        <div class="product-card-body">
-                            <h5 class="card-title">Core Components</h5>
-                            <div class="price">$15.99</div>
-                            <div class="stars">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star-half-stroke"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-                <div class="col-xl-3 col-lg-6 gy-4 gutters">
-                    <div class="card">
-                    <a href="/product-detail"><img src="../images/computer.jpg" class="card-img-top" alt="..."></a>
-                        <div class="product-card-body">
-                            <h5 class="card-title">Cases</h5>
-                            <div class="price">$15.99</div>
-                            <div class="stars">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star-half-stroke"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 gy-4 gutters">
-                    <div class="card">
-                   <a href="/product-detail"> <img src="../images/computer.jpg" class="card-img-top" alt="..."></a>
-                        <div class="product-card-body">
-                            <h5 class="card-title">Computer Storage</h5>
-                            <div class="price">$15.99</div>
-                            <div class="stars">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star-half-stroke"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 gy-4 gutters">
-                    <div class="card">
-                    <a href="/product-detail"><img src="../images/computer.jpg" class="card-img-top" alt="..."></a>
-                        <div class="product-card-body">
-                            <h5 class="card-title">PC cooling</h5>
-                            <div class="price">$15.99</div>
-                            <div class="stars">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star-half-stroke"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
+            <% }) %>
+        </div>
+    </div>
+</section>

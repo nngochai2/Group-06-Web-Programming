@@ -4,6 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const vendorRoutes = require('./routes/vendorRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 const customerRoutes = require('./routes/customerRoutes');
 const productRoutes = require('./routes/productRoutes');
 const redirectOnLoginRoute = require('./routes/auth');
@@ -20,7 +21,10 @@ mongoose.connect(mongoURI, {
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Error connecting to MongoDB:', err));
+
 app.use(productRoutes);
+app.use(cartRoutes);
+
 app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

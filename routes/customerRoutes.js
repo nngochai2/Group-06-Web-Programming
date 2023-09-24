@@ -6,7 +6,6 @@ router.get('/', async (req, res) => {
   try {
     // Fetch all products from the database
     const products = await Product.find({});
-
     // Group products by category
     const productsByCategory = products.reduce((acc, product) => {
       const category = product.category;
