@@ -1,0 +1,33 @@
+# Bespoke.IT
+
+Full-stack Web Application
+## Installation
+
+Use the package manager [npm] to install dependencies.
+
+```bash
+npm install
+```
+
+## Usage
+
+```python
+node index.js
+```
+
+## Contributing
+Pham Thanh Mai (s3978365)
+
+Nguyen Ngoc Hai (s3978281)
+
+Phan Nguyen Viet Nhan (s3978145)
+
+Tran Nhat Minh (s3977767)
+
+Nguyen Duy Anh (s4022628)
+
+
+
+## License
+
+[RMIT]
