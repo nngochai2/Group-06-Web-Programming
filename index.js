@@ -15,7 +15,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const vendorRoutes = require('./routes/vendorRoutes');
-//const cartRoutes = require('./routes/cartRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 const customerRoutes = require('./routes/customerRoutes');
 const productRoutes = require('./routes/productRoutes');
 const shipperRoutes = require('./routes/shipperRoutes');
@@ -41,7 +41,7 @@ app.use(session({
 }));
 
 app.use(productRoutes);
-//app.use(cartRoutes);
+app.use(cartRoutes);
 
 app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({ extended: true }));
@@ -57,7 +57,7 @@ app.get('/shopping', (req, res) => res.render('customer'));
 app.get('/products', (req, res) => res.render('products'));
 app.get('/cart', (req, res) => res.render('cart'));
 app.get('/myaccount', (req, res) => res.render('myaccount'));
-//app.get('/shipper', (req, res) => res.render('shipper'));
+app.get('/shipper', (req, res) => res.render('shipper'));
 app.get('/login', (req, res) => res.render('login'));
 app.get('/product-detail', (req, res) => res.render('product-detail'));
 app.get('/login/register', (req, res) => res.render('user'));
@@ -134,6 +134,8 @@ app.post('/login', passport.authenticate('local', {
     res.redirect('/login'); // Redirect to login page if not authenticated
   }
 });
+
+
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
