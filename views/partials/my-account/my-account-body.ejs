@@ -1,0 +1,44 @@
+ <!-- RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023B
+  Assessment: Assignment 2
+  Author: Group 6
+  ID: Pham Thanh Mai (s3978365)
+       Nguyen Ngoc Hai (s3978281)
+       Phan Nguyen Viet Nhan (s3978145)
+       Tran Nhat Minh (s3977767)
+       Nguyen Duy Anh (s4022628)
+  Acknowledgement: Bootstrap, FontAwesome , Ion-icon, W3School, Freepik -->
+<h1 class="text-center">My Account</h1>
+    <div class="flex justify-center ">
+        
+        <img src="/images/side-bar-user1.jpg" style="width: 13rem;" class="m-auto d-flex object-cover aspect-square border-primary border-2 rounded-full" alt="user-image">
+        <div class="container w-50">
+            <label for="fullName" class="col-sm-2 col-form-label ">Full Name</label>
+            <div class=" input-group col-sm-10">
+              <input type="text" readonly class="form-control mb-3 rounded p-2" id="fullName" value="Phan Nguyen Viet Nhan">
+            </div>
+            <label for="userName" class="col-sm-2 col-form-label">Username</label>
+            <div class=" input-group col-sm-10">
+              <input type="text" readonly class="form-control mb-3 rounded p-2" id="userName" value="vietnhan">
+            </div>
+            <label for="customer-address" class="col-sm-2 col-form-label">Address</label>
+            <div class="input-group col-sm-10">
+              <input type="text" readonly class="form-control mb-3 rounded p-2" id="customer-address" value="279 Kim Ma, Ha Noi">
+            </div>
+            <label for="phoneNum" class="col-sm-2 col-form-label">Phone Number</label>
+            <div class="input-group col-sm-10">
+              <input type="number" readonly class="form-control mb-3 rounded p-2" id="phoneNum" value="0888633339">
+            </div>
+            <label for="accountType" class="col-sm-2 col-form-label">Account Type</label>
+            <div class="input-group col-sm-10">
+              <input type="text" readonly class="form-control mb-3 rounded p-2" id="accountType" value="Customer">
+            </div>
+            <label for="formFile" class="col col-form-label">Update Profile Picture</label>
+            <div class=" input-group col-sm-10">
+            <input class="form-control-sm form-control mb-3 rounded p-2 " id="formFile" type="file"/>
+            </div>
+        </div>       
+        <button onclick="window.location.href='#'" class="text-center d-flex m-auto btn mb-5 btn-primary btn-block btn-round hover:opacity-80">Update Profile Picture</button>     
+        <button onclick="window.location.href='/auth/logout'" class="text-center d-flex m-auto btn mb-5 btn-danger btn-block btn-round hover:opacity-80">Log out</button>     
+    </div>  

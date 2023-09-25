@@ -1,0 +1,50 @@
+ <!-- RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023B
+  Assessment: Assignment 2
+  Author: Group 6
+  ID: Pham Thanh Mai (s3978365)
+       Nguyen Ngoc Hai (s3978281)
+       Phan Nguyen Viet Nhan (s3978145)
+       Tran Nhat Minh (s3977767)
+       Nguyen Duy Anh (s4022628)
+  Acknowledgement: Bootstrap, FontAwesome , Ion-icon, W3School, Freepik -->
+<div class="container">
+    <div class="form-container">
+        <h1>Contact Us</h1>
+        <form action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="role">You are:</label>
+            <select id="role" name="role" required>
+                <option value="Vendor">Vendor</option>
+                <option value="Customer">Customer</option>
+                <option value="Shipper">Shipper</option>
+            </select>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="details">Provide More Detail:</label>
+            <textarea id="details" name="details" required></textarea>
+
+            <div class="radio-group">
+                <label class="radio">Contact Method:</label>
+                <input type="radio" id="phone-method" name="contact-method" value="Phone" required>
+                <label class="radio" for="phone-method">Phone</label>
+
+                <input type="radio" id="email-method" name="contact-method" value="Email" required>
+                <label class="radio" for="email-method">Email</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11973.717765309516!2d105.80980162262825!3d21.025607063007136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac7a04f31e4f%3A0x301dc1b2bbdb4ea9!2sNgoc%20Khanh%20Lake!5e0!3m2!1sen!2s!4v1569912678385!5m2!1sen!2s" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    </div>
+</div>

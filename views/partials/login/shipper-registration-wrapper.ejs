@@ -1,0 +1,75 @@
+ <!-- RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023B
+  Assessment: Assignment 2
+  Author: Group 6
+  ID: Pham Thanh Mai (s3978365)
+       Nguyen Ngoc Hai (s3978281)
+       Phan Nguyen Viet Nhan (s3978145)
+       Tran Nhat Minh (s3977767)
+       Nguyen Duy Anh (s4022628)
+  Acknowledgement: Bootstrap, FontAwesome , Ion-icon, W3School, Freepik -->
+<div class="regis-wrapper">
+    <div class="form-box register">
+        <h2>Shipper Registration</h2>
+        <form action="/registerShipper" method="POST" enctype="multipart/form-data">
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <input type="text" name="fullName" required>
+                <label>Your Full Name</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <input type="text" name="username" required id="username">
+                <label>Username</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input type="password" name="password" required id="password">
+                <label>Password</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input type="password" name="confirmpassword" required id="confirmpassword">
+                <label>Confirm Your Password</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="home"></ion-icon></span>
+                <input type="text" name="address" required>
+                <label>Your address</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="map"></ion-icon></span>
+                <select class="custom-select mr-sm-2" name="distributionHub" id="inlineFormCustomSelect" required>
+                    <option value="" disabled selected>Choose Distribution Hub</option>
+                    <option value="1">Dubai</option>
+                    <option value="2">Shanghai</option>
+                    <option value="3">Hong Kong</option>
+                </select>
+            </div>
+            <div class="file_container">
+                <div class="panel">
+                    <div class="button_outer">
+                        <div class="btn_upload">
+                            <input type="file" id="upload_file" name="profilePicture">
+                            Upload Your Profile Picture
+                        </div>
+                        <div class="processing_bar"></div>
+                        <div class="success_box"></div>
+                    </div>
+                </div>
+                <div class="error_msg"></div>
+                <div class="uploaded_file_view" id="uploaded_view">
+                    <span class="file_remove">X</span>
+                </div>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">I agree to the terms & conditions</label>
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <div class="login-register">
+                <p>Already have an account? <a href="/login" class="login-link">Login</a></p>
+            </div>
+        </form>
+    </div>
+</div>

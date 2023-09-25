@@ -1,0 +1,87 @@
+/* RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023B
+  Assessment: Assignment 2
+  Author: Group 6
+  ID: Pham Thanh Mai (s3978365)
+       Nguyen Ngoc Hai (s3978281)
+       Phan Nguyen Viet Nhan (s3978145)
+       Tran Nhat Minh (s3977767)
+       Nguyen Duy Anh (s4022628
+  Acknowledgement: Bootstrap, FontAwesome , Ion-icon, W3School, Freepik */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+/* Styling display containers */
+#current-prd{
+    background-color: #97B2DE;
+    border-radius: 10px;
+   
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+#add-prd{ 
+    background-color: #97B2DE;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+/* styling table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #97B2DE;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+tr:nth-child(even) {
+    background-color: white ;
+}
+/* styling functional buttons,labels,input */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.vendor-edit{
+    padding-right: auto;
+}
+.vendor-edit input{
+    display: none;
+}
+.vendor-edit a{
+    color: red;
+}
+.vendor-edit label{
+    cursor: pointer;
+}
+.vendor-edit label:hover{
+    color: #018ABE ;
+}
+#submit-product{
+    background-color: #1A488E;
+    color: white;
+    border: none;
+}
+#submit-product:hover{
+    background-color: white;
+    color: #97B2DE;
+}

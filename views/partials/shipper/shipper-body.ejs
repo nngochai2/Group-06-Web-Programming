@@ -1,0 +1,93 @@
+ <!-- RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023B
+  Assessment: Assignment 2
+  Author: Group 6
+  ID: Pham Thanh Mai (s3978365)
+       Nguyen Ngoc Hai (s3978281)
+       Phan Nguyen Viet Nhan (s3978145)
+       Tran Nhat Minh (s3977767)
+       Nguyen Duy Anh (s4022628)
+  Acknowledgement: Bootstrap, FontAwesome , Ion-icon, W3School, Freepik -->
+<div class="container">
+    <section class="order-table">
+        <h2>Active Orders</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Delivery Address</th>
+                    <th>Total Amount ($)</th>
+                    <th>Status</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% activeOrders.forEach(order => { %>
+                    <tr>
+                        <td><%= order._id %></td>
+                        <td><%= order.customerName %></td>
+                        <td><%= order.deliveryAddress %></td>
+                        <td><%= order.totalAmount %></td>
+                        <td><%= order.status %></td>
+                        <td class="order-detail">
+                            <a href="/order/detail/<%= order._id %>">View Details</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </section>
+    
+    <section class="order-table">
+        <h2>Inactive Orders</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Delivery Address</th>
+                    <th>Total Amount ($)</th>
+                    <th>Status</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% inactiveOrders.forEach(order => { %>
+                    <tr>
+                        <td><%= order._id %></td>
+                        <td><%= order.customerName %></td>
+                        <td><%= order.deliveryAddress %></td>
+                        <td><%= order.totalAmount %></td>
+                        <td><%= order.status %></td>
+                        <td class="order-detail">
+                            <a href="/order/detail/<%= order._id %>">View Details</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </section>
+    
+
+    <section class="hub-cards">
+        <div class="hub-card">
+            <img  src="./images/dubai.jpg" alt="Dubai Hub">
+            <h2 class="text-center fw-bold">Dubai</h2>
+            <p class="text-center">Introducing Dubai's flagship distribution center: Your gateway to seamless logistics and unmatched product access in the heart of the Middle East. Our state-of-the-art facility ensures swift, reliable deliveries across diverse product categories.</p>
+        </div>
+        <div class="hub-card">
+            <img src="./images/shanghai.jpg" alt="Shanghai hub">
+            <h2 class="text-center fw-bold">Shanghai</h2>
+            <p class="text-center" >Introducing Shanghai's Leading Distribution Center: Your key to streamlined logistics and unparalleled product accessibility in Asia's economic powerhouse. Our cutting-edge facility guarantees swift, dependable deliveries spanning a wide array of product categories.</p>
+        </div>
+        <div class="hub-card">
+            <img src="./images/paris.jpg" alt="Paris hub">
+            <h2 class="text-center fw-bold">Paris</h2>
+            <p class="text-center">Presenting Paris's Premier Distribution Center: Your ultimate destination for efficient logistics and unparalleled product reach in the heart of Europe. Our cutting-edge facility ensures prompt, reliable deliveries across a diverse range of products.</p>
+        </div>
+    </section>
+
+
+</div>

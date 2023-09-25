@@ -1,0 +1,36 @@
+ <!-- RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023B
+  Assessment: Assignment 2
+  Author: Group 6
+  ID: Pham Thanh Mai (s3978365)
+       Nguyen Ngoc Hai (s3978281)
+       Phan Nguyen Viet Nhan (s3978145)
+       Tran Nhat Minh (s3977767)
+       Nguyen Duy Anh (s4022628)
+  Acknowledgement: Bootstrap, FontAwesome , Ion-icon, W3School, Freepik -->
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head section here -->
+    <%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" type="text/css" href="/css/vendor.css">
+    <script src="https://kit.fontawesome.com/d3a524326f.js" crossorigin="anonymous"></script>
+    <!--Import Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Head section here -->
+<body>
+    <!-- Navigation bar section here -->
+    <%- include('./partials/others-nav.ejs') %>
+    <!-- Main section here -->
+    <main>
+        <!--Vendor Body-->
+        <%- include('./partials/vendor/vendor-body.ejs', {products: products}) %>
+    </main> 
+        <!-- Footer section here -->
+        <%- include('./partials/footer.ejs') %>
+        <!-- Footer section here -->
+
+        <!--Js link-->
+<script type="text/javascript" src="/js/customer-script.js"></script>
+</body>
+</html>
