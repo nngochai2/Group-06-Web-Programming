@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const Product = require('../models/product'); 
 const router = express.Router();
+const upload = multer({ dest: 'uploads/' });
 
 // Set up storage engine with multer
 const storage = multer.diskStorage({
@@ -13,8 +14,6 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage });
-
 router.get('/vendor', async (req, res) => {
     try {
         const products = await Product.find({});
@@ -25,29 +24,58 @@ router.get('/vendor', async (req, res) => {
     }
 });
 
-router.post('/users/vendor/newproduct', upload.single('productImage'), async (req, res) => {
+router.get('/image/:productId', async (req, res) => {
     try {
-        const { name, price, stockQuantity, description } = req.body;
-        const productImage = req.file;
+        const productId = req.params.productId;
+        console.log('Product ID:', productId); 
+        
+        const product = await Product.findById(productId);
+        if (!product) {
+            console.log('Product not found'); 
+            throw new Error('Product not found');
+        }
+        
+        if (!product.image || !product.image.data) {
+            console.log('Image not found for product'); 
+            throw new Error('Image not found');
+        }
+        
+        res.set('Content-Type', product.image.contentType);
+        res.send(product.image.data);
+    } catch (error) {
+        console.error(error);
+        res.status(404).send('Image not found');
+    }
+});
 
+
+router.post('/users/vendor/newproduct', upload.single('image'), async (req, res) => {
+    try {
+        const { name, price, description, category, stockQuantity } = req.body;
+        
+        if (!category) {
+            return res.status(400).send('Category is required');
+        }
         const newProduct = new Product({
             name,
             price,
-            stockQuantity,
             description,
-            image: productImage ? {
-                data: productImage.buffer,
-                contentType: productImage.mimetype
-            } : null,
+            category,
+            stockQuantity,
+            image: {
+                data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+                contentType: image/png
+            }
         });
-
         await newProduct.save();
-        res.redirect('/vendor');
+        res.status(201).send('Product added successfully');
+        res.redirect('/vendor')
     } catch (error) {
         console.error(error);
-        res.status(500).render('error', { message: 'Error adding new product' });
+        res.status(500).send('Server Error');
     }
 });
+
 
 router.get('/vendor/edit/:productId', async (req, res) => {
     try {
